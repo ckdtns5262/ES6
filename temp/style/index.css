@@ -1,0 +1,54 @@
+/* 레이아웃 */
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Noto Serif KR', serif;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    background-color: blue;
+    font-style: italic;
+    text-align: center;
+    top: 0;
+    position: sticky;
+    
+}
+main {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+main > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bt1, .bt2 {
+    background-color: gray;
+    color: whitesmoke;
+    display: inline-block;
+    width: 100%;
+    margin: 1vh;
+    width: 50vw;
+    height: 20vw;
+    max-width: 200px;
+    max-height: 50px;
+    border-radius: 10%;
+    font-size: 1rem;
+    font-family: 'Noto Serif KR', serif;
+    
+}
+.button :hover, button:active {
+    background-color: #006399;
+    color: yellowgreen;
+}
