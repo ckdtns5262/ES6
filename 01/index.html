@@ -17,7 +17,7 @@
         console.log("Hello World");
         console.log(document.getElementById("bt"));
     </script> -->
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/dom.js"></script>
 
 </head>
 <!-- 여기도 가능 -->
@@ -29,9 +29,12 @@
             <h1>JavaScript연습</h1>
         </header>
         <main id="content">
+            <section id="msg"></section>
+            <input type="radio">
+      
             <section id="bt">
-                <button onclick="funPrint(1)" class="bt1"><span>버튼1</span></button>
-                <button onclick="funPrint(2)" class="bt1"><span>버튼2</span></button>
+                <button class="bt1" onclick="show();"><span>주사위</span></button>
+                <!-- <button onclick="funPrint(2)" class="bt1"><span>버튼2</span></button> -->
                
             </section>
         </main>
