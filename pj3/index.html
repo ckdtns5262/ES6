@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>자바스크립트</title> 
+  <title>자바스크립트</title>
 
   <link rel="stylesheet" href="./styles/index.css">
-<script src="/pj3/scripts/index.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-   
+  <script src="/ES6/pj3/scripts/pra.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
   <div id="root">
-    <header><h1>폭탄게임</h1></header>
+    <header>
+      <h1>폭탄게임</h1>
+    </header>
     <main id="content">
       <section id="board">
         <div class="boardRow">
@@ -29,7 +34,7 @@
           <div class="boardBox" id="box7" onclick="show(7);">7</div>
           <div class="boardBox" id="box8" onclick="show(8);">8</div>
           <div class="boardBox" id="box9" onclick="show(9);">9</div>
-        </div>       
+        </div>
       </section>
       <section id="bt">
         <button id="bt1" onclick="boxShuffle();">폭탄섞기</button>
@@ -37,6 +42,7 @@
       <section id="msg">
       </section>
     </main>
-  </div>  
+  </div>
 </body>
+
 </html>

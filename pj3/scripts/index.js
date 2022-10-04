@@ -1,6 +1,6 @@
 //폭탄이 있는 위치를 나타내는 배열
 //DOM이 로드가 되면 반복문을 이용하여 [0,0,0,0,0,0,0,0,1]로 초기화
-let num = [0, 0, 0, 0, 0, 0, 0, 0, 1];
+ let num = [];
 
 
  //박스를 선택한 순서를 기록하는 배열
@@ -9,65 +9,79 @@ let num = [0, 0, 0, 0, 0, 0, 0, 0, 1];
  // //박스를 선택한 개수를 기록하는 변수
  let cnt = 0;
 
- //폭탄이 섞였는지 체크하는 flag변수
- let shuffleFlag = false;
-
-//폭탄 섞기
-const boxShuffle = () => {
-    shuffle();
+ //폭탄이 섞였는지 체크하는 flag변수  
+ let shuffleFlag = false;                            
+ //메세지 출력 함수
+ const msgShow= (m) =>{
+ let msg = document.getElementById('msg');
+ msg.innerHTML = `<h2>${m}</h2>`;
+ }
+ //초기화 함수
+ const init = ()=>{
     
-   
-   
+  // 메세지 지우기  
+    msgShow("");
+ 
+  // 그림 지우기
+  for(let i=1; i<=9; i++){
+    document.getElementById(`box${i}`).innerHTML ="" 
+  }
 
+// 선택했던 숫자 배열 초기화
+  selNum = [];
 
 }
 
-// 셔플 함수
-const shuffle = () => {
-    for (let i = 0; i < num.length; i++) {
-        let idx1 = Math.floor(Math.random() * 9);
-        let idx2 = Math.floor(Math.random() * 9);
-        
-        if (idx1 != idx2) {
-            let temp = num[idx1];
-            num[idx1] = num[idx2];
-            num[idx2] = temp;
-        }
-    }
-    console.log(num)
+ 
+
+
+
+ // 숫자박스가 선택된 경우
+ const show = (x)=>{
+ if(!shuffleFlag) {
+   msgShow("폭탄을 섞어 주세요.")
+   return
+ } 
+ 
+ // 눌러진 번호판 배열에 추가
+ if(!selNum.includes(x)) selNum.push(x)
+ cnt++;
+ console.log(selNum, cnt,selNum.length);               //cnt와 selNum.length 똑같이 갯수 체크해줌
+ 
+
+ // 폭탄이 있는 배열을 참고하여 그림 변경
+ //  let imgSrc = "hart";
+ //  if(num[n-1] == 1) imgSrc = "bomb"
+ let imgSrc = null;
+ if(num[x-1]==1) imgSrc ="boom"
+ else imgSrc = "hart"
+
+ // 현재 눌러진 숫자 박스에 그림표시
+ document.getElementById(`box${x}`).innerHTML =`<img src=/ES6/pj3/images/${imgSrc}.png>`
+  //성공 체크
+ if(selNum.length == 8) {
+   let fn = [1,2,3,4,5,7,8,9].filter((i)=>!selNum.includes(i))
+   console.log(fn[0]) 
+   document.getElementById(`box${fn[0]}`).innerHTML =`<img src=/ES6/pj3/images/hart.png>`
+   msgShow("성공입니다")
+   shuffleFlag = false;
+ }
+
+ 
+  //실패 체크
+ if(imgSrc == "boom") {
+    shuffleFlag = false
+    msgShow("실패입니다")
+ }
 }
 
-// show 함수 누를때
-const show = (idx) => {
-    if(shuffleFlag = true){
-        showImg(idx);
-      
-    }else{
-        console.log(alert("폭탄을 섞어주세요"))
-        
-      
-    }
-   
-}
-// show 눌렀을때 이미지 보여주는 함수
-const showImg = (idx)=>{
-    if (num[idx - 1]) {                                         // 1이면 폭탄사진
-        console.log(alert("폭탄입니다 꽝"))
-        let tag = `<img src="/pj3/images/boom.png">`
-        document.getElementById(`box${idx}`).innerHTML = tag;
-
-    } else {
-        let tag = `<img src="/pj3/images/hart.png">`            // 1이 아니면 하트사진
-        document.getElementById(`box${idx}`).innerHTML = tag;
-        cnt += 1
-    }
-    if (cnt == 8) {
-        for (let i = 1; i <= 9; i++) {                          // 하트사진이 8개면 
-            let tag = `<img src="/pj3/images/hart.png">`
-            document.getElementById(`box${i}`).innerHTML = tag;
-            console.log(("성공입니다 대박👍"))
-        }
-    }
+ // 폭탄섞기 함수
+ const boxShuffle = () => {
+  num.sort(()=>Math.random() -0.5 );
+  shuffleFlag = true;
+ // 초기화 함수 호출
+  init();
+   console.log(num);
 }
 
 
@@ -75,11 +89,18 @@ const showImg = (idx)=>{
 
 
 
-/* DOM이 로드된 후에 클릭이벤트 연결*/
+
+
+
+
+
+ /* DOM이 로드된 후에 클릭이벤트 연결*/
 document.addEventListener("DOMContentLoaded", () => {
-
+//DOM이 로드가 되면 반복문을 이용하여 [0,0,0,0,0,0,0,0,1]로 초기화
+for (let i =0; i<8; i++){
+    num.push(0);
+    }
+    num.push(1);
+    console.log(num)
 
 });
-
-
-
