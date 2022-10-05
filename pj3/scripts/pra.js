@@ -49,7 +49,7 @@ const show = (idx) => {
       console.log(alert("폭탄을 섞어주세요"))
       return;
     } 
-
+    
     showImg(idx);
     
   }
@@ -57,25 +57,27 @@ const show = (idx) => {
 const showImg = (idx)=>{
     if (num[idx - 1]) {                                         // 1이면 폭탄사진
         console.log(alert("폭탄입니다 꽝"))
-        let tag = `<img src="/ES6/pj3/images/boom.png">`
+        let tag = `<img src="/pj3/images/boom.png">`
         document.getElementById(`box${idx}`).innerHTML = tag;
         shuffleFlag = false;
         init();
         
     } else {
-        let tag = `<img src="/ES6/pj3/images/hart.png">`            // 1이 아니면 하트사진
+        let tag = `<img src="/pj3/images/hart.png">`            // 1이 아니면 하트사진
         document.getElementById(`box${idx}`).innerHTML = tag;
         cnt += 1
     }
 
     if (cnt == 8) {
         for (let i = 1; i <= 9; i++) {                          // 하트사진이 8개면 
-            let tag = `<img src="/ES6/pj3/images/hart.png">`
+            let tag = `<img src="/pj3/images/hart.png">`
             document.getElementById(`box${i}`).innerHTML = tag;
-            console.log(("성공입니다 대박👍"))
+            
+            shuffleFlag = false;
         }
-        shuffleFlag = false;
-        init();
+        alert("성공입니다 대박👍");
+       init();
+        
     }
 }
 
